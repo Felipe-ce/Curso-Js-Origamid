@@ -29,3 +29,6 @@ function dados() {
   return outrosDados()
 }
 console.log(dados())
+addEventListener('click', function () {
+  console.log('Oi')
+})
