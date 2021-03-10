@@ -20,6 +20,11 @@ function Dom(element) {
     })
   }
 
+  this.remodeClass = function(classe) {
+    this.element.forEach((item) =>{
+      item.classList.remove(classe)
+    })
+  }
 }
 
 const li = new Dom('li');
