@@ -7,6 +7,7 @@ function callback(event) {
 
 // h1.addEventListener('click', callback);
 // h1.addEventListener('mouseenter', callback);
+// h1.addEventListener('mousemove', callback);
 // window.addEventListener('scroll', callback);
 // window.addEventListener('resize', callback);
-window.addEventListener('keydown', callback);
+// window.addEventListener('keydown', callback);
