@@ -37,3 +37,14 @@ cidade.concat(estado)
 const cidadeEstado = cidade.concat(estado)
 //pode ter mais de um elemento conforme abaixo
 const cidadeEstadoMais = cidade.concat(estado, ' Brasil', ' America do sul')
+
+// _____________________________________________
+/*    
+     STR.INCLUDES(SEARCH, POSITION)
+     Procura pela string exata dentro de outra string. A procura é case sensitive.
+*/
+const fruta = 'banana'
+const listaFrutas = 'melancia, banana, laranja'
+
+console.log(listaFrutas.includes('banana'))
+console.log(fruta.includes('Banana'))
