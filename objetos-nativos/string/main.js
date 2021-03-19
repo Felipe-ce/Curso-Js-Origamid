@@ -32,11 +32,8 @@ console.log(linguagem.charAt(--linguagem.length))
 */
 const cidade = 'fortaleza '
 const estado = 'ceara'
-
 cidade.concat(estado)
 
-
-
-//const cidadeEstado = cidade.concat(estado)
+const cidadeEstado = cidade.concat(estado)
 //pode ter mais de um elemento conforme abaixo
-//const cidadeEstadoMais = cidade.concat(estado, ' Brasil', ' America do sul')
+const cidadeEstadoMais = cidade.concat(estado, ' Brasil', ' America do sul')
