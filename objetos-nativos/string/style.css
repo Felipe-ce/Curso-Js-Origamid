@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+input{
+  padding: 5px;
+}
+.container{
+  max-width: 600px;
+  padding: 50px 20px;
+  margin: 0 auto;
+  background: #c9c9c9;
+}
+.btn{
+  margin-top: 20px;
+  padding: 5px;
+  width: 100px;
+}
+
+.res{
+  margin-top: 10px;
+  background: rgb(247, 247, 247);
+  height: 40px;
+}
