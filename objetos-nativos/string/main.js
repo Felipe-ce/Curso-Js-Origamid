@@ -48,3 +48,37 @@ const listaFrutas = 'melancia, banana, laranja'
 
 console.log(listaFrutas.includes('banana'))
 console.log(fruta.includes('Banana'))
+
+// _____________________________________________
+/*    
+     STR.ENDSWITH(SEARCH) E STR.STARTSWITH(SEARCH)
+     Procura pela string exata dentro de outra string. A procura é case sensitive.
+*/
+const banana = 'banana'
+
+// console.log(fruta.endsWith('nana')); // true
+// console.log(fruta.startsWith('Ba')); // true
+// console.log(fruta.startsWith('na')); // false
+
+// _____________________________________________
+/*    
+     STR.SLICE(START, END)
+     Corta a string de acordo com os valores de start e end.
+*/
+const transação1 = 'Deposito de cliente'
+const transação2 = 'Deposito de cliente'
+const transação3 = 'Deposito de cliente'
+
+// console.log(transação1.slice(0, 5)) //de START a END
+// console.log(transação2.slice(10, 200)) //de START a END
+// console.log(transação3.slice(2, -2)) //corta os dois primeiros e os dois ultimos
+
+console.log(transação1.slice(12)) //Corta a primeira posição
+console.log(transação2.slice(1)) //Corta as 5 primeira posições
+console.log(transação3.slice(-4)) //pega as 4 ultimas posições
+
+// _____________________________________________
+/*    
+     STR.SLICE(START, END)
+     Corta a string de acordo com os valores de start e end.
+*/
