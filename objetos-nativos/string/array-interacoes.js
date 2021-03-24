@@ -108,38 +108,131 @@ console.log(total1)
 
 const total2 = aulas1.reduce((acc, cur) => acc + cur, 100)
 console.log(total2)
-/*
-REDUCE PASSO A PASSO 1
-O primeiro parâmetro do callback é o valor do segundo argumento passado no reduce(callback, inicial) durante a primeira iteração. Nas iterações seguintes este valor passa a ser o retornado pela anterior.
+
+// REDUCE PASSO A PASSO 1
+// O primeiro parâmetro do callback é o valor do segundo argumento passado no reduce(callback, inicial) durante a primeira iteração. Nas iterações seguintes este valor passa a ser o retornado pela anterior.
+
+// const aulas = [10, 25, 30];
+
+// // 1
+// aulas.reduce((0, 10) => {
+//   return 0 + 10;
+// }, 0); // retorna 10
+
+// // 2
+// aulas.reduce((10, 25) => {
+//   return 10 + 25;
+// }, 0); // retorna 35
+
+// // 3
+// aulas.reduce((35, 30) => {
+//   return 35 + 30;
+// }, 0); // retorna 65
+// 
+
+// REDUCE PASSO A PASSO 2
+// Se não definirmos o valor inicial do acumulador, ele irá pular a primeira iteração e começara a partir da segunda. Neste caso o valor do acumulador será o valor do item da primeira iteração.
+// 
+// const aulas = [10, 25, 30];
+
+// // 1
+// aulas.reduce((10, 25) => {
+//   return 10 + 25;
+// }) // retorna 35
+
+// // 2
+// aulas.reduce((35, 30) => {
+//   return 35 + 30;
+// }) // retorna 65
+
+const numeros3 = [10,25,30,3,54,33,22]
+const maiorNumero = numeros3.reduce((anterior, atual) =>{
+  return anterior < atual ? atual : anterior
+}, 0)
+console.log(maiorNumero)
+
+
+const aulas3 = [
+  {
+    nome: 'HTML 1',
+    min: 15
+  },
+  {
+    nome: 'HTML 2',
+    min: 10
+  },
+  {
+    nome: 'CSS 1',
+    min: 20
+  },
+  {
+    nome: 'JS 1',
+    min: 25
+  },
+]
+
+const listaAulas3 = aulas3.reduce((acumulador, aula, index)=>{
+  acumulador[index] = aula.nome
+  return acumulador
+}, {})
+
+console.log(listaAulas3)
+
+// PASSO A PASSO REDUCE
+// Passo a passo do método reduce criando um Objeto.
+// // 1
+// aulas.reduce(({}, {nome: 'HTML 1', min: 15}, 0) => {
+//   {}[0] = 'HTML 1';
+//   return {0: 'HTML 1'};
+// }, {})
+
+// // 2
+// aulas.reduce(({0: 'HTML 1'}, {nome: 'HTML 2', min: 10}, 1) => {
+//   {0: 'HTML 1'}[1] = 'HTML 2';
+//   return {0: 'HTML 1', 1: 'HTML 2'};
+// }, {})
+
+// // 3
+// aulas.reduce(({0: 'HTML 1', 1: 'HTML 2'}, {nome: 'CSS 1', min: 20}, 2) => {
+//   {0: 'HTML 1', 1: 'HTML 2'}[2] = 'CSS 1';
+//   return {0: 'HTML 1', 1: 'HTML 2', 2: 'CSS 1'};
+// }, {})
+
+// // 4
+// aulas.reduce(({0: 'HTML 1', 1: 'HTML 2', 2: 'CSS 1'}, {nome: 'JS 1', min: 25}, 3) => {
+//   {0: 'HTML 1', 1: 'HTML 2', 2: 'CSS 1'}[3] = 'JS 1';
+//   return {0: 'HTML 1', 1: 'HTML 2', 2: 'CSS 1', 3: 'JS 1'};
+// }, {})
+
+
+// _____________________________________________
+/*    
+  [].REDUCERIGHT()
+  Existe também o método [].reduceRight(), a diferença é que este começa a iterar da direita para a esquerda, enquanto o reduce itera da esquerda para a direita.
 */
-const aulas = [10, 25, 30];
+const frutas = ['Banana', 'Pêra', 'Uva'];
 
-// 1
-aulas.reduce((0, 10) => {
-  return 0 + 10;
-}, 0); // retorna 10
+const frutasRight = frutas.reduceRight((acc, fruta) => acc + ' ' + fruta);
+const frutasLeft = frutas.reduce((acc, fruta) => acc + ' ' + fruta);
 
-// 2
-aulas.reduce((10, 25) => {
-  return 10 + 25;
-}, 0); // retorna 35
+frutasRight; // Uva Pêra Banana
+frutasLeft; // Banana Pêra Uva
 
-// 3
-aulas.reduce((35, 30) => {
-  return 35 + 30;
-}, 0); // retorna 65
-/*
-REDUCE PASSO A PASSO 2
-Se não definirmos o valor inicial do acumulador, ele irá pular a primeira iteração e começara a partir da segunda. Neste caso o valor do acumulador será o valor do item da primeira iteração.
+
+// _____________________________________________
+/*    
+  [].SOME()
+  [].some(), se pelo menos um return da iteração for truthy, ele retorna true.
 */
-const aulas = [10, 25, 30];
+const frutas1 = ['Banana', 'Pêra', 'Uva'];
 
-// 1
-aulas.reduce((10, 25) => {
-  return 10 + 25;
-}) // retorna 35
+const temUva = frutas1.some((fruta) =>{
+  return fruta.toLocaleLowerCase === 'uva';
+})
+console.log(temUva)
 
-// 2
-aulas.reduce((35, 30) => {
-  return 35 + 30;
-}) // retorna 65
+function maiorQue100(numero) {
+  return numero > 100
+}
+const numeros4 = [4, 5, 50, 8, 870, 1200] 
+const temMaior = numeros4.some(maiorQue100)
