@@ -224,15 +224,122 @@ frutasLeft; // Banana Pêra Uva
   [].SOME()
   [].some(), se pelo menos um return da iteração for truthy, ele retorna true.
 */
-const frutas1 = ['Banana', 'Pêra', 'Uva'];
+// const frutas1 = ['Banana', 'Pêra', 'Uva'];
 
-const temUva = frutas1.some((fruta) =>{
-  return fruta.toLocaleLowerCase === 'uva';
+// const temUva = frutas1.some((fruta) =>{
+//   return fruta.toLocaleLowerCase === 'uva';
+// })
+// console.log(temUva)
+
+// function maiorQue100(numero) {
+//   return numero > 100
+// }
+// const numeros4 = [4, 5, 50, 8, 870, 1200] 
+// const temMaior = numeros4.some(maiorQue100)
+
+
+// _____________________________________________
+/*    
+  [].EVERY()
+  [].every(), se todos os returns das iterações forem truthy, o método irá retornar true. Se pelo menos um for falsy, ele irá retornar false.
+*/
+const frutas2 = ['banana', 'uva', 'melancia', '']
+const arrayvheias = frutas2.every((fruta)=>{
+  return fruta
 })
-console.log(temUva)
+console.log(arrayvheias)
 
-function maiorQue100(numero) {
-  return numero > 100
-}
-const numeros4 = [4, 5, 50, 8, 870, 1200] 
-const temMaior = numeros4.some(maiorQue100)
+
+
+// _____________________________________________
+/*    
+  [].FIND() E [].FINDINDEX()
+  [].find(), retorna o valor atual da primeira iteração que retornar um valor truthy. Já o [].findIndex(), ao invés de retornar o valor, retorna o index deste valor na array.
+*/
+const notebook = [
+  'teclado',
+  'carcaça',
+  'teclado',
+  'tela',
+]
+const buscaTela = notebook.find((item) =>{
+  return item === 'tela'
+})
+console.log(buscaTela)
+
+const buscarTela2 = notebook.findIndex((item)=>{
+  return item === 'tela'
+})
+console.log(buscarTela2)
+
+const numeros5 = [
+  5,
+  8,
+  90,
+  9,
+  5100,
+  1,
+]
+const buscarMaior45 = numeros5.find((item) => item > 45)
+console.log(buscarMaior45)
+
+
+// _____________________________________________
+/*    
+  [].FILTER()
+  [].filter(), retorna uma array com a lista de valores que durante a sua iteração retornaram um valor truthy.
+*/
+const moto = [
+  'aro',
+  'pneu',
+  'cubo',
+  '',
+  null,
+  undefined,
+  0,
+  'disco de freio'
+]
+const motoLimpa = moto.filter((item) =>{
+  return item
+})
+console.log(motoLimpa)
+
+const numeros6 = [
+  6,
+  9,
+  4,
+  68,
+  66,
+  670,
+  48,
+  25,
+]
+const buscarMaiores45 = numeros6.filter((item) => item > 45)
+console.log(buscarMaiores45)
+
+const bicicletas = [
+  {
+    modelo: 'Caloi',
+    preco: 45.90
+  },
+  {
+    modelo: 'Monark',
+    preco: 90.90
+  },
+  {
+    modelo: 'Cros',
+    preco: 79.90
+  },
+  {
+    modelo: 'Mountain',
+    preco: 199.99
+  },
+  {
+    modelo: 'Infantil',
+    preco: 29.99
+  },
+]
+const bicicletaMaior99 = bicicletas.filter((bicicleta) =>{
+  return bicicleta.preco > 59;
+})
+console.log(bicicletaMaior99)
