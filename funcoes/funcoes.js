@@ -58,7 +58,7 @@ console.log(areaQuadrado.length, areaQuadrado.name)
 //descricaoCarro.call()//Indefinido
 //descricaoCarro.call(carros)//'Ford 2018'
 
-const carro = {
+const carro1 = {
   marca: 'celta',
   ano: 2002
 }
@@ -66,3 +66,126 @@ function descricaoCarro2(velocidade) {
   console.log(this.marca + ' ' + this.ano + ' ' + 'velocidade: ' + velocidade)
 }
 descricaoCarro2.call({marca: 'celta', ano: 2002}, 160)//com o call o this vai tomar como referencia o objeto que esta passando.
+
+
+
+/*
+  THIS
+  O valor de this faz referência ao objeto criado durante a construção do objeto (Constructor Function). Podemos trocar a referência do método ao this, utilizando o call().
+*/
+// const carros = ['Ford', 'Fiat', 'VW'];
+
+// carros.forEach((item) => {
+//   console.log(item);
+// }); // Log de cada Carro
+
+// carros.forEach.call(carros, (item) => {
+//   console.log(item);
+// }); // Log de cada Carro
+
+// const frutas = ['Banana', 'Pêra', 'Uva'];
+
+// carros.forEach.call(frutas, (item) => {
+//   console.log(item);
+// }); // Log de cada Fruta
+// COPIAR
+// EXEMPLO REAL
+// O objeto atribuído a lista será o substituído pelo primeiro argumento de call()
+
+// function Dom(seletor) {
+//   this.element = document.querySelector(seletor);
+// };
+
+// Dom.prototype.ativo = function(classe) {
+//   this.element.classList.add(classe);
+// };
+
+// const lista = new Dom('ul');
+// lista.ativo('ativar');
+// console.log(lista);
+// COPIAR
+// O OBJETO DEVE SER PARECIDO
+// O novo valor de this deve ser semelhante a estrutura do valor do this original do método. Caso contrário o método não conseguirá interagir de forma correta com o novo this.
+
+// const novoSeletor = {
+//   element: document.querySelector('li')
+// }
+
+// Dom.prototype.ativo.call(novoSeletor, 'ativar');
+// COPIAR
+// ARRAY'S E CALL
+// É comum utilizarmos o call() nas funções do protótipo do construtor Array. Assim podemos estender todos os métodos de Array à objetos que se parecem com uma Array (array-like).
+
+// Array.prototype.mostreThis = function() {
+//   console.log(this);
+// }
+
+// const frutas = ['Uva', 'Maçã', 'Banana'];
+// frutas.mostreThis(); // ['Uva', 'Maçã', 'Banana']
+
+// Array.prototype.pop.call(frutas); // Remove Banana
+// frutas.pop(); // Mesma coisa que a função acima
+// COPIAR
+// ARRAY-LIKE
+// HTMLCollection, NodeList e demais objetos do Dom, são parecidos com uma array. Por isso conseguimos utilizar os mesmos na substituição do this em call.
+
+// const li = document.querySelectorAll('li');
+
+// const filtro = Array.prototype.filter.call(li, function(item) {
+//   return item.classList.contains('ativo');
+// });
+
+// filtro; // Retorna os itens que possuem ativo
+
+
+/*
+  FUNCTION.APPLY()
+  HTMLCollection, NodeList e demais objetos do Dom, são parecidos com uma array. Por isso conseguimos utilizar os mesmos na substituição do this em call.
+*/
+const numeros = [3,4,5,6,1,34,44,32];
+console.log(Math.max.apply(null, numeros))
+
+
+/*
+  APPLY VS CALL
+  A única diferença é a array como segundo argumento.
+*/
+const li = document.querySelectorAll('li');
+
+function itemPossuiAtivo(item) {
+  return item.classList.contains('ativo');
+}
+
+const filtro1 = Array.prototype.filter.call(li, itemPossuiAtivo);
+const filtro2 = Array.prototype.filter.apply(li, [itemPossuiAtivo]);
+
+
+/*
+  FUNCTION.BIND()
+  Diferente de call e apply, bind(this, arg1, arg2, ...) não irá executar a função mas sim retornar a mesma com o novo contexto de this.
+*/
+const li1 = document.querySelectorAll('li')
+const filtrarLi = Array.prototype.filter.bind(li, function (item) {
+  return item.classList.contains('ativo')
+})
+filtrarLi()
+/*
+ARGUMENTOS E BIND
+Não precisamos passar todos os argumentos no momento do bind, podemos passar os mesmos na nova função no momento da execução da mesma.
+*/
+const carro = {
+  marca: 'Ford',
+  ano: 2018,
+  acelerar: function(aceleracao, tempo) {
+    return `${this.marca} acelerou ${aceleracao} em ${tempo}`;
+  }
+}
+carro.acelerar(100, 20);
+// Ford acelerou 100 em 20
+
+const honda = {
+  marca: 'Honda',
+};
+const acelerarHonda = carro.acelerar.bind(honda);
+acelerarHonda(200, 10);
+// Honda acelerou 200 em 10
